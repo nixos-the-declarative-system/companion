@@ -7,6 +7,7 @@
     ./modules/users.nix
     ./modules/tools.nix
     ./modules/remote-access.nix
+    ./modules/web.nix
   ];
 
   # Boot
