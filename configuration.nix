@@ -25,6 +25,8 @@
   networking.hostName = "workshop";
   networking.networkmanager.enable = true;
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # Remote access
   my.remoteAccess.enable = true;
 
