@@ -27,6 +27,8 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.overlays = [ (import ./overlays/tweaks.nix) ];
+  sops.defaultSopsFile = ./secrets/workshop.yaml;
+  sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 
   # Remote access
   my.remoteAccess.enable = true;

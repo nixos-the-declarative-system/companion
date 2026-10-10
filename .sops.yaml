@@ -1,0 +1,8 @@
+keys:
+  - &camille age1r6n4yf2glswkgw0jyemcgs2gta0tp8xwckvxjs382ls3hu3jhauq2sfysy
+  - &workshop age189ky2rsqu0yggyugzm0f3853zr8rg5a0cptpmxs294cx6jlq35sswqhkdk
+
+creation_rules:
+  - path_regex: secrets/.*\.yaml$
+    key_groups:
+      - age: [ *camille, *workshop ]
