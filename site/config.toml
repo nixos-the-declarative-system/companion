@@ -1,0 +1,4 @@
+base_url = "/"
+title = "camille’s notebook"
+compile_sass = false
+build_search_index = false
