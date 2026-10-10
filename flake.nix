@@ -12,6 +12,7 @@
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
     in {
       packages.x86_64-linux.tomate = pkgs.callPackage ./packages/tomate.nix { };
+      packages.x86_64-linux.my-blog = pkgs.callPackage ./packages/my-blog.nix { };
 
       nixosConfigurations.workshop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
