@@ -9,6 +9,7 @@
     ./modules/remote-access.nix
     ./modules/web.nix
     ./modules/database.nix
+    ./modules/desktop.nix
   ];
 
   # Boot
