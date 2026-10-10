@@ -10,6 +10,7 @@
     ./modules/web.nix
     ./modules/database.nix
     ./modules/desktop.nix
+    ./modules/virtual-machine.nix
   ];
 
   # Boot
