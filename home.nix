@@ -6,6 +6,8 @@
     fd
     jq
     tree
+  ] ++ [
+    (pkgs.callPackage ./packages/tomate.nix { })
   ];
 
   programs.git = {
