@@ -3,14 +3,15 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./modules/locale.nix
-    ./modules/users.nix
-    ./modules/tools.nix
-    ./modules/remote-access.nix
-    ./modules/web.nix
-    ./modules/database.nix
-    ./modules/desktop.nix
-    ./modules/virtual-machine.nix
+    ../../modules/base.nix
+    ../../modules/locale.nix
+    ../../modules/users.nix
+    ../../modules/tools.nix
+    ../../modules/remote-access.nix
+    ../../modules/web.nix
+    ../../modules/database.nix
+    ../../modules/desktop.nix
+    ../../modules/virtual-machine.nix
   ];
 
   # Boot
@@ -25,9 +26,7 @@
   networking.hostName = "workshop";
   networking.networkmanager.enable = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nixpkgs.overlays = [ (import ./overlays/tweaks.nix) ];
-  sops.defaultSopsFile = ./secrets/workshop.yaml;
+  sops.defaultSopsFile = ../../secrets/workshop.yaml;
   sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 
   # Remote access
