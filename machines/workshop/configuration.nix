@@ -30,6 +30,10 @@
 
   sops.defaultSopsFile = ../../secrets/workshop.yaml;
   sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+  sops.secrets."nix/signing-key" = { };
+
+  nix.settings.secret-key-files =
+    [ config.sops.secrets."nix/signing-key".path ];
 
   # Remote access
   my.remoteAccess.enable = true;
