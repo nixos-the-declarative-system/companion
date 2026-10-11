@@ -8,10 +8,12 @@
     ../../modules/remote-access.nix
     ../../modules/web.nix
     ../../modules/database.nix
+    ../../modules/forge.nix
   ];
 
   networking.hostName = "showcase";
   networking.hosts."192.168.122.33" = [ "workshop" ];
+  networking.hosts."127.0.0.1" = [ "forge" ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

@@ -25,7 +25,7 @@
   # Identity
   networking.hostName = "workshop";
   networking.networkmanager.enable = true;
-  networking.hosts."192.168.122.97" = [ "showcase" ];
+  networking.hosts."192.168.122.97" = [ "showcase" "forge" ];
 
   sops.defaultSopsFile = ../../secrets/workshop.yaml;
   sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
