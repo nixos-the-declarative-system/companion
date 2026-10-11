@@ -27,6 +27,7 @@
   networking.hostName = "workshop";
   networking.networkmanager.enable = true;
   networking.hosts."192.168.122.97" = [ "showcase" "forge" ];
+  networking.hosts."192.168.122.62" = [ "granite" ];
 
   sops.defaultSopsFile = ../../secrets/workshop.yaml;
   sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
