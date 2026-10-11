@@ -17,7 +17,7 @@
     };
   };
 
-  sops.secrets."forge/tls-key" = { };
+  sops.secrets."forge/tls-key".owner = "nginx";
 
   services.nginx.virtualHosts."forge" = {
     forceSSL = true;
