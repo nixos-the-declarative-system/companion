@@ -1,8 +1,9 @@
-{ config, my-blog, ... }:
+{ config, my-blog, modulesPath, ... }:
 
 {
   imports = [
-    ./hardware-configuration.nix        # does not exist yet — the body will supply it
+    (modulesPath + "/profiles/qemu-guest.nix")
+    ./disks.nix
     ../../modules/base.nix
     ../../modules/locale.nix
     ../../modules/users.nix
@@ -20,11 +21,6 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  swapDevices = [{
-    device = "/dev/disk/by-partlabel/swap";  # nor does it — the body will dig it
-    randomEncryption.enable = true;
-  }];
 
   my.remoteAccess.enable = true;
   my.web.networkAccess = true;
