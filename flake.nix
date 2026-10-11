@@ -31,6 +31,7 @@
         ];
       };
       nixosConfigurations.showcase = nixpkgs.lib.nixosSystem {
+        specialArgs = { my-blog = self.packages.x86_64-linux.my-blog; };
         system = "x86_64-linux";
         modules = [
           ./machines/showcase/configuration.nix

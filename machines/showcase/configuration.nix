@@ -1,3 +1,5 @@
+{ my-blog, ... }:
+
 {
   imports = [
     ./hardware-configuration.nix        # does not exist yet — the body will supply it
@@ -27,6 +29,9 @@
   my.remoteAccess.enable = true;
   my.web.networkAccess = true;
   my.database.networkAccess = true;
+
+  services.nginx.virtualHosts."localhost".root =
+    "${my-blog}";
 
   sops.defaultSopsFile = ../../secrets/showcase.yaml;
   sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
