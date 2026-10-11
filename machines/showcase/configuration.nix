@@ -1,4 +1,4 @@
-{ my-blog, ... }:
+{ config, my-blog, ... }:
 
 {
   imports = [
@@ -29,6 +29,30 @@
   my.remoteAccess.enable = true;
   my.web.networkAccess = true;
   my.database.networkAccess = true;
+
+  services.postgresqlBackup = {
+    enable = true;
+    databases = [ "camille" "forgejo" ];
+  };
+
+  sops.secrets."backup/password" = { };
+  sops.secrets."backup/ssh-key" = { };
+
+  networking.hosts."192.168.122.62" = [ "granite" ];
+
+  programs.ssh.knownHosts."granite".publicKey =
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJzUvhaIR7xx0E3KN9MoFvgIDsCoy4kZePCtCkFzbNpQ";
+
+  services.restic.backups.daily = {
+    repository = "sftp:backup@granite:showcase";
+    passwordFile = config.sops.secrets."backup/password".path;
+    extraOptions = [
+      "sftp.command='ssh backup@granite -i ${config.sops.secrets."backup/ssh-key".path} -s sftp'"
+    ];
+    paths = [ "/srv/www" "/var/backup/postgresql" "/var/lib/forgejo" ];
+    timerConfig = { OnCalendar = "02:30"; };
+    initialize = true;
+  };
 
   services.nginx.virtualHosts."localhost".root =
     "${my-blog}";
