@@ -28,5 +28,14 @@
           { system.configurationRevision = self.rev or self.dirtyRev or null; }
         ];
       };
+      nixosConfigurations.showcase = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./machines/showcase/configuration.nix
+          home-manager.nixosModules.home-manager
+          sops-nix.nixosModules.sops
+          { system.configurationRevision = self.rev or self.dirtyRev or null; }
+        ];
+      };
     };
 }
