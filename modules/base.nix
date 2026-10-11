@@ -4,6 +4,12 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.overlays = [ (import ../overlays/tweaks.nix) ];
 
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+
   sops.secrets."forge/token" = {
     mode = "0440";
     group = "wheel";          # the daemon (root) and the machine's admins
