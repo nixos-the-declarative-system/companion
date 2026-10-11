@@ -9,9 +9,11 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     site.url = "git+https://forge/camille/carnet.git";
     site.flake = false;
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, sops-nix, site }:
+  outputs = { self, nixpkgs, home-manager, sops-nix, site, disko }:
     let
       pkgs = import nixpkgs {
         system = "x86_64-linux";
@@ -35,6 +37,16 @@
         system = "x86_64-linux";
         modules = [
           ./machines/showcase/configuration.nix
+          home-manager.nixosModules.home-manager
+          sops-nix.nixosModules.sops
+          { system.configurationRevision = self.rev or self.dirtyRev or null; }
+        ];
+      };
+      nixosConfigurations.trial = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./machines/trial/configuration.nix
+          disko.nixosModules.disko
           home-manager.nixosModules.home-manager
           sops-nix.nixosModules.sops
           { system.configurationRevision = self.rev or self.dirtyRev or null; }
