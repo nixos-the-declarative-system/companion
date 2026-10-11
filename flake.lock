@@ -41,7 +41,24 @@
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
+        "site": "site",
         "sops-nix": "sops-nix"
+      }
+    },
+    "site": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1791728439,
+        "narHash": "sha256-UhIwFdvkStpCkM5pnQSjzjZLna0NeDRGKNfPIJclHAQ=",
+        "ref": "refs/heads/main",
+        "rev": "7bcdc0baab672a7913cf52ac6aeaeed67f322826",
+        "revCount": 2,
+        "type": "git",
+        "url": "ssh://forgejo@forge/camille/carnet.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://forgejo@forge/camille/carnet.git"
       }
     },
     "sops-nix": {
