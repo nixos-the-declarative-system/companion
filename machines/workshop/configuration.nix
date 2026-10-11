@@ -36,6 +36,28 @@
   nix.settings.secret-key-files =
     [ config.sops.secrets."nix/signing-key".path ];
 
+  sops.secrets."backup/password" = { };
+  sops.secrets."backup/ssh-key" = { };
+
+  programs.ssh.knownHosts."granite".publicKey =
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJzUvhaIR7xx0E3KN9MoFvgIDsCoy4kZePCtCkFzbNpQ";
+
+  services.restic.backups.daily = {
+    repository = "sftp:backup@granite:workshop";
+    passwordFile = config.sops.secrets."backup/password".path;
+    extraOptions = [
+      "sftp.command='ssh backup@granite -i ${config.sops.secrets."backup/ssh-key".path} -s sftp'"
+    ];
+    paths = [ "/home/camille" ];
+    exclude = [
+      "/home/camille/.ssh"
+      "/home/camille/.config/sops"
+      "/home/camille/.cache"
+    ];
+    timerConfig = { OnCalendar = "02:30"; };
+    initialize = true;
+  };
+
   # Remote access
   my.remoteAccess.enable = true;
 

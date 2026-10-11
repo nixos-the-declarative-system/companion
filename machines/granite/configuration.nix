@@ -22,6 +22,7 @@
     isNormalUser = true;
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL5dYBdBDh/xOi7cL/wVgA4Z3zSYLYvnHPn59iV8927K backup@showcase"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICFFgCsSLwyJWlkM4pSIckKl1ovUI/JZA/dwaceadUpo backup@workshop"
     ];
   };
 
