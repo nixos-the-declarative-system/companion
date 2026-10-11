@@ -1,9 +1,17 @@
+{ lib, config, ... }:
+
 {
-  services.nginx.enable = true;
+  options.my.web.networkAccess =
+    lib.mkEnableOption "publishing the site on the network";
 
-  services.nginx.virtualHosts."localhost" = {
-    root = "/srv/www";
+  config = {
+    services.nginx.enable = true;
+
+    services.nginx.virtualHosts."localhost" = {
+      root = "/srv/www";
+    };
+
+    networking.firewall.allowedTCPPorts =
+      lib.mkIf config.my.web.networkAccess [ 80 ];
   };
-
-  networking.firewall.allowedTCPPorts = [ 80 ];
 }
