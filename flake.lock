@@ -54,11 +54,11 @@
         "rev": "7bcdc0baab672a7913cf52ac6aeaeed67f322826",
         "revCount": 2,
         "type": "git",
-        "url": "ssh://forgejo@forge/camille/carnet.git"
+        "url": "https://forge/camille/carnet.git"
       },
       "original": {
         "type": "git",
-        "url": "ssh://forgejo@forge/camille/carnet.git"
+        "url": "https://forge/camille/carnet.git"
       }
     },
     "sops-nix": {
