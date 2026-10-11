@@ -12,6 +12,7 @@
     ../../modules/database.nix
     ../../modules/desktop.nix
     ../../modules/virtual-machine.nix
+    ../../modules/certificates.nix
   ];
 
   # Boot

@@ -9,6 +9,7 @@
     ../../modules/web.nix
     ../../modules/database.nix
     ../../modules/forge.nix
+    ../../modules/certificates.nix
   ];
 
   networking.hostName = "showcase";
