@@ -2,13 +2,13 @@
 
 stdenv.mkDerivation {
   pname = "tomate";
-  version = "1.2.0";
+  version = "1.2.1";
 
   src = fetchFromGitHub {
     owner = "nixos-the-declarative-system";
     repo = "tomate";
-    rev = "v1.2.0";
-    hash = "sha256-3Wx5Xhi1DoCym0SWxshBdC00l7wu8ESblgGkzQweLC4=";
+    rev = "v1.2.1";
+    hash = "sha256-buNZm0Su0vcdO2OT6krLXIDpAc7MHcy6cQSuHtjWEQQ=";
   };
 
   makeFlags = [ "PREFIX=$(out)" ];

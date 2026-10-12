@@ -1,14 +1,7 @@
 final: prev: {
 
-  # the homemade package enters pkgs — its fix shipped
-  tomate = (final.callPackage ../packages/tomate.nix { }).overrideAttrs (old: {
-    patches = (old.patches or [ ]) ++ [
-      (final.fetchpatch {
-        url = "https://github.com/nixos-the-declarative-system/tomate/commit/5db8b17.patch";
-        hash = "sha256-wzxQisC2rGj27aCn/mCWUZ+BUd666xTccBFAPirQ2e4=";
-      })
-    ];
-  });
+  # the homemade package enters pkgs
+  tomate = final.callPackage ../packages/tomate.nix { };
 
   # htop, moved forward one version
   htop = prev.htop.overrideAttrs (old: rec {
