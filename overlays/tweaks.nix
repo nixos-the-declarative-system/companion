@@ -35,4 +35,7 @@ final: prev: {
       hash = "sha256-AqizStE9ICd6mNDZWdeXg6dHuTiY+B0TNauQQYWUa84=";
     };
   });
+
+  # sentinelle, the vendor's binary — repaired at build time
+  sentinelle = final.callPackage ../packages/sentinelle.nix { };
 }

@@ -3,6 +3,7 @@
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.overlays = [ (import ../overlays/tweaks.nix) ];
+  nixpkgs.config.allowUnfree = true;
 
   nix.gc = {
     automatic = true;

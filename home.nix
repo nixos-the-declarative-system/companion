@@ -7,6 +7,7 @@
     jq
     tree
     tomate    # a citizen in its own right
+    sentinelle
   ];
 
   programs.git = {
