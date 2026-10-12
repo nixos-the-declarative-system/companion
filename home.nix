@@ -8,6 +8,7 @@
     tree
     tomate    # a citizen in its own right
     sentinelle
+    fhs
   ];
 
   programs.git = {

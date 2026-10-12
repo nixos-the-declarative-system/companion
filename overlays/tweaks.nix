@@ -38,4 +38,5 @@ final: prev: {
 
   # sentinelle, the vendor's binary — repaired at build time
   sentinelle = final.callPackage ../packages/sentinelle.nix { };
+  fhs = final.callPackage ../packages/fhs.nix { };
 }
