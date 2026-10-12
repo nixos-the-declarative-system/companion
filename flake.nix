@@ -64,6 +64,11 @@
         ];
       };
 
-      checks.x86_64-linux.web = pkgs.testers.runNixOSTest ./tests/web.nix;
+      checks.x86_64-linux = {
+        web                = pkgs.testers.runNixOSTest ./tests/web.nix;
+        web-network-access = pkgs.testers.runNixOSTest ./tests/web-network-access.nix;
+
+        showcase-builds = self.nixosConfigurations.showcase.config.system.build.toplevel;
+      };
     };
 }
