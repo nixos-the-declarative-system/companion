@@ -21,6 +21,11 @@
       };
     in {
       packages.x86_64-linux.tomate = pkgs.tomate;
+      packages.x86_64-linux.tomate-image = pkgs.dockerTools.buildLayeredImage {
+        name = "tomate";
+        tag  = "1.2.0";
+        config.Entrypoint = [ "${self.packages.x86_64-linux.tomate}/bin/tomate" ];
+      };
       packages.x86_64-linux.my-blog = pkgs.callPackage ./packages/my-blog.nix { src = site; };
 
       nixosConfigurations.workshop = nixpkgs.lib.nixosSystem {
