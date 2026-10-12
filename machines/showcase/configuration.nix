@@ -64,6 +64,7 @@
       hash = "sha256-3R5Brfw/TxI6gfT6xWevJAW+7HYWJf75DKmsqMo3GHo=";
     };
     cmd = [ "forge" ];
+    extraOptions = [ "--add-host=forge:host-gateway" ];
   };
 
   system.stateVersion = "26.05";
