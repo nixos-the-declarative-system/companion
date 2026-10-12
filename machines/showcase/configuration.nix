@@ -1,4 +1,4 @@
-{ config, my-blog, modulesPath, ... }:
+{ config, pkgs, my-blog, modulesPath, ... }:
 
 {
   imports = [
@@ -55,6 +55,16 @@
 
   sops.defaultSopsFile = ../../secrets/showcase.yaml;
   sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+
+  virtualisation.oci-containers.containers.sentinelle = {
+    image = "localhost/sentinelle-agent:3.0";
+    imageFile = pkgs.fetchurl {
+      url = "https://github.com/nixos-the-declarative-system/sentinelle"
+        + "/releases/download/agent-3.0/sentinelle-agent-3.0.tar";
+      hash = "sha256-3R5Brfw/TxI6gfT6xWevJAW+7HYWJf75DKmsqMo3GHo=";
+    };
+    cmd = [ "forge" ];
+  };
 
   system.stateVersion = "26.05";
 }
