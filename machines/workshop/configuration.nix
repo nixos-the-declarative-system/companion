@@ -67,5 +67,12 @@
     randomEncryption.enable = true;
   }];
 
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [   # a starter kit
+    stdenv.cc.cc.lib   # libstdc++, libgcc_s — the #1 request
+    openssl            # TLS — sentinelle asked you for it
+    zlib               # compression — the other ubiquitous one
+  ];
+
   system.stateVersion = "26.05";  # (already present) — will never change again — see the box
 }
