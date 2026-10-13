@@ -16,7 +16,7 @@
   ];
 
   networking.hostName = "showcase";
-  networking.hosts."192.168.8.10" = [ "workshop" ];
+  networking.hosts."192.168.122.1" = [ "workshop" ];
   networking.hosts."127.0.0.1" = [ "forge" ];
 
   boot.loader.systemd-boot.enable = true;
