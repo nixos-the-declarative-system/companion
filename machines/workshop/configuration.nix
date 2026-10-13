@@ -17,8 +17,12 @@
   ];
 
   # Boot
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = lib.mkForce false;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.lanzaboote = {
+    enable = true;
+    pkiBundle = "/var/lib/sbctl";
+  };
 
   # The kernel
   boot.kernelPackages = pkgs.linuxPackages;          # the LTS — the default value
