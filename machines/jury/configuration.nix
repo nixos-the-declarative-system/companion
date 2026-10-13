@@ -10,6 +10,7 @@
     ../../modules/tools.nix
     ../../modules/remote-access.nix
     ../../modules/certificates.nix
+    ../../modules/runner.nix
   ];
 
   networking.hostName = "jury";
